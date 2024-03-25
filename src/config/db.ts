@@ -3,6 +3,7 @@ import {
   Connection,
   getConnectionManager,
   DataSourceOptions,
+  DataSource,
 } from "typeorm";
 import ormconfig from "../../ormconfig";
 
@@ -48,3 +49,5 @@ class DbManager {
 }
 
 export const dbManager = new DbManager();
+
+export const datasoure = new DataSource(ormconfig as DataSourceOptions)

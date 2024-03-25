@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { Customer_Book } from "./customer_book";
 import { Author } from "./author";
+import { BookType } from "./book_type";
 
 @Entity({ schema: "public", name: "book" })
 export class Book {
@@ -21,4 +22,7 @@ export class Book {
 
   @ManyToOne(() => Author, (author) => author.book)
   author: Author;
+
+  @ManyToOne(() => BookType)
+  bookType: BookType;
 }
