@@ -41,7 +41,6 @@ export class CustomerService extends BookService {
         );
         totalPriceToBePaid += priceResult.price;
         if (priceResult.isLate)
-          //if db is not connected in cutomer_book, there is no book data so instead of book_name, push book uuid
           lateReturnBooks.push(
              book.book.book_name,
           );

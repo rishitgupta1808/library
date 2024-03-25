@@ -18,4 +18,6 @@ export const getCustomerFeesByBooksValidator: ValidationChain[] = [
       }
       return true;
     }),
+  query("current_date").optional()
+  .isDate()  
 ];
