@@ -38,13 +38,14 @@ export class CustomerService extends BookService {
           book.days_to_return,
           new Date(book.lent_date),
           current_date,
+          book.book.bookType.min_day,
+          book.book.bookType.min_charges,
+          book.book.bookType.charges_in_min_day,
         );
+
         totalPriceToBePaid += priceResult.price;
-        if (priceResult.isLate)
-          //if db is not connected in cutomer_book, there is no book data so instead of book_name, push book uuid
-          lateReturnBooks.push(
-             book.book.book_name,
-          );
+
+        if (priceResult.isLate) lateReturnBooks.push(book.book.book_name);
       }
 
       return {

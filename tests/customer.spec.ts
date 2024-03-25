@@ -73,6 +73,32 @@ it('should return 400 for bad requests', async () => {
     expect(response.status).toBe(200); 
 
     expect(response.body.success).toBe(true);
-    expect(response.body.data.price).toBe(36);
+    expect(response.body.data.price).toBe(34);
+  });
+
+  it('when book type minimum date data is null (Fiction book data)', async () => {
+    const response = await request(app).get('/api/customer/fees')
+      .query({
+        customer_id: 3,
+        book_id: '48ec4968-8ac3-4609-8a9a-f2dc29846743',
+      });
+
+    expect(response.status).toBe(200); 
+
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.price).toBe(84);
+  });
+
+  it('when book is rented less than minimum days, mimimum charges should be considered', async () => {
+    const response = await request(app).get('/api/customer/fees')
+      .query({
+        customer_id: 13,
+        book_id: '9eb414dd-8599-43a8-941d-64be8d7a2552',
+      });
+
+    expect(response.status).toBe(200); 
+
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.price).toBe(4.5);
   });
 });
