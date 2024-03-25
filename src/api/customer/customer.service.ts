@@ -20,19 +20,20 @@ export class CustomerService extends BookService {
   calculateFessByBookIds = async (payload: CustomerFeesByBookIdPayload) => {
     try {
       const { customer_id, book_id, current_date } = payload;
-      const books = (await dbManager.isConnected())     //check is  db connected or not
+      const books = (await dbManager.isConnected()) //check is  db connected or not
         ? await this.getBooksByCustomerId({
             customer_id,
             book_id: book_id.split(","),
           })
-        : CustomerBookMockData(customer_id, book_id.split(","));    //if db is not connected call Mock API for sample data for test cases
+        : CustomerBookMockData(customer_id, book_id.split(",")); //if db is not connected call Mock API for sample data for test cases
 
-      let totalPriceToBePaid = 0;   //total fees of all the books
-      let lateReturnBooks = [];     //book ids of late submission
+      let totalPriceToBePaid = 0; //total fees of all the books
+      let lateReturnBooks = []; //book ids of late submission
 
       // iterate over each book to calculate total price
       for (const book of books) {
-        let priceResult = calculatePriceToBePaid(   //function to calculate the price of each books
+        let priceResult = calculatePriceToBePaid(
+          //function to calculate the price of each books
           BOOK_PRICE_PER_DAY,
           book.days_to_return,
           new Date(book.lent_date),
@@ -40,7 +41,7 @@ export class CustomerService extends BookService {
         );
         totalPriceToBePaid += priceResult.price;
         if (priceResult.isLate)
-        //if db is not connected in cutomer_book, there is no book data so instead of book_name, push book uuid
+          //if db is not connected in cutomer_book, there is no book data so instead of book_name, push book uuid
           lateReturnBooks.push(
             "book" in book ? book.book.book_name : book.bookBookId,
           );

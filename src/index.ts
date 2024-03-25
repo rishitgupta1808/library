@@ -8,7 +8,6 @@ let server: any = startApp(port);
 
 console.log("orrmConfig", orrmConfig, port);
 
-
 dbManager
   .connect()
   .then(async () => {

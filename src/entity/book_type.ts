@@ -1,5 +1,5 @@
 // BookType.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class BookType {
@@ -9,6 +9,6 @@ export class BookType {
   @Column()
   type: string;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @Column({ type: "decimal", precision: 10, scale: 2 })
   price: number;
 }
