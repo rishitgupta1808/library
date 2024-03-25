@@ -1,12 +1,14 @@
 import { startApp } from "./app";
 import orrmConfig from "../ormconfig";
 import { dbManager } from "./config/db";
+import dotenv from "dotenv";
+dotenv.config();
 
-const port = 8080;
+const port = +process.env.PORT || 8080;
 
 let server: any = startApp(port);
 
-console.log("orrmConfig", orrmConfig, port);
+console.log("orrmConfig", orrmConfig, process.env.PORT);
 
 dbManager
   .connect()

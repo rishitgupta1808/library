@@ -34,7 +34,7 @@ export class CustomerService extends BookService {
       for (const book of books) {
         let priceResult = calculatePriceToBePaid(
           //function to calculate the price of each books
-          BOOK_PRICE_PER_DAY,
+          book.book.bookType.price,
           book.days_to_return,
           new Date(book.lent_date),
           current_date,
@@ -43,7 +43,7 @@ export class CustomerService extends BookService {
         if (priceResult.isLate)
           //if db is not connected in cutomer_book, there is no book data so instead of book_name, push book uuid
           lateReturnBooks.push(
-            "book" in book ? book.book.book_name : book.bookBookId,
+             book.book.book_name,
           );
       }
 

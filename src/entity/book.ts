@@ -24,5 +24,5 @@ export class Book {
   author: Author;
 
   @ManyToOne(() => BookType)
-  bookType: BookType;
+  bookType?: BookType;
 }

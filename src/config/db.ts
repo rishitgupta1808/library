@@ -5,7 +5,11 @@ import {
   DataSourceOptions,
   DataSource,
 } from "typeorm";
+import dotenv from "dotenv";
+dotenv.config();
 import ormconfig from "../../ormconfig";
+
+
 
 class DbManager {
   private connection: Connection | undefined;
