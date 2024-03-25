@@ -1,27 +1,28 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
-import { Customer_Book } from './customer_book';
-import { Author } from './author';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Customer_Book } from "./customer_book";
+import { Author } from "./author";
+import { BookType } from "./book_type";
 
-@Entity({ schema: 'public', name: 'book' })
-export class Book{
+@Entity({ schema: "public", name: "book" })
+export class Book {
+  // constructor(data : {book_id: string, book_name: string, author : Author}) {
+  //     this.book_id = data.book_id;
+  //     this.book_name = data.book_name;
+  //     this.author = data.author;
+  // }
 
-    // constructor(data : {book_id: string, book_name: string, author : Author}) {
-    //     this.book_id = data.book_id;
-    //     this.book_name = data.book_name;
-    //     this.author = data.author;
-    // }
+  @PrimaryColumn({ type: "uuid" })
+  book_id: string;
 
+  @Column({ type: "varchar", unique: true })
+  book_name: string;
 
-    @PrimaryColumn({type : "uuid" })
-    book_id : string;
+  @OneToMany(() => Customer_Book, (custbok) => custbok.book)
+  customer_book?: Customer_Book[];
 
-    @Column({type : "varchar", unique : true})
-    book_name : string;
+  @ManyToOne(() => Author, (author) => author.book)
+  author: Author;
 
-    @OneToMany(()=>Customer_Book,  custbok  =>custbok.book)
-    customer_book ?: Customer_Book[];
-
-    @ManyToOne(()=>Author, author=> author.book)
-    author : Author;
-
-} 
+  @ManyToOne(() => BookType)
+  bookType?: BookType;
+}
