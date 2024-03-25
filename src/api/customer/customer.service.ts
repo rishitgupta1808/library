@@ -32,14 +32,20 @@ export class CustomerService extends BookService {
 
       // iterate over each book to calculate total price
       for (const book of books) {
+       
         let priceResult = calculatePriceToBePaid(
           //function to calculate the price of each books
           book.book.bookType.price,
           book.days_to_return,
           new Date(book.lent_date),
           current_date,
+          book.book.bookType.min_day,
+          book.book.bookType.min_charges,
+          book.book.bookType.charges_in_min_day
         );
+        
         totalPriceToBePaid += priceResult.price;
+        
         if (priceResult.isLate)
           lateReturnBooks.push(
              book.book.book_name,

@@ -10,7 +10,10 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "psst huzzah meh",
         bookType : {
             id : 1,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 2,
+            min_charges : 2,
+           charges_in_min_day : 1.00
         }
       }
     },
@@ -24,7 +27,9 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "even geez worthwhile",
         bookType : {
             id : 3,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 3,
+            min_charges : 4.5
         }
       }
     },
@@ -38,7 +43,9 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "conductor popcorn timbale",
         bookType : {
             id : 1,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 2,
+            min_charges : 2,
         }
       }
     },
@@ -52,7 +59,10 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "gah laborer superintend",
         bookType : {
             id : 1,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 2,
+            min_charges : 2,
+           charges_in_min_day : 1.00
         }
       }
     },
@@ -66,7 +76,10 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "each anticipate pfft",
         bookType : {
             id : 1,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 2,
+            min_charges : 2,
+           charges_in_min_day : 1.00
         }
       }
     },
@@ -80,10 +93,26 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "outmaneuver aha old-fashioned",
         bookType : {
             id : 3,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 3,
+            min_charges : 4.5
         }
       }
     },
+    {
+        id: 11,
+        days_to_return: 28,
+        bookBookId: "48ec4968-8ac3-4609-8a9a-f2dc29846743",
+        lent_date: "2023-09-23",
+        customerCustomerId: 3,
+        book : {
+          book_name : "phew diagnosis mukluk",
+          bookType : {
+              id : 2,
+              price  : 3.00,
+          }
+        }
+      },
     {
       id: 15,
       days_to_return: 14,
@@ -94,7 +123,9 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "apportion amidst blah",
         bookType : {
             id : 3,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 3,
+            min_charges : 4.5
         }
       }
     },
@@ -108,7 +139,10 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "excitedly elementary miserably",
         bookType : {
             id : 1,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 2,
+            min_charges : 2,
+           charges_in_min_day : 1.00
         }
       }
     },
@@ -122,10 +156,29 @@ export const CustomerBookMockData = (customer_id: number, book_id: string[]) =>
         book_name : "fiercely yum terribly",
         bookType : {
             id : 1,
-            price  : 1.50
+            price  : 1.50,
+            min_day : 2,
+            min_charges : 2,
+           charges_in_min_day : 1.00
         }
       }
     },
+    {
+        id: 42,
+        days_to_return: 2,
+        bookBookId: "9eb414dd-8599-43a8-941d-64be8d7a2552",
+        lent_date: "2024-01-24",
+        customerCustomerId: 13,
+        book : {
+          book_name : "consequently across obedient",
+          bookType : {
+              id : 3,
+              price  : 1.50,
+              min_day : 3,
+              min_charges : 4.50,
+          }
+        }
+      }
   ].filter(
     (d) =>
       d.customerCustomerId == customer_id && book_id.includes(d.bookBookId),
