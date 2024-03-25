@@ -17,7 +17,7 @@ export class BookService extends Book {
       relations: {
         customer: true,
         book: {
-            bookType : true
+          bookType: true,
         },
       },
       where: {
