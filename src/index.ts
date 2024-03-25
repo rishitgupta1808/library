@@ -1,20 +1,21 @@
-import { createConnection, getConnection, DataSourceOptions } from "typeorm";
 import { startApp } from "./app";
 import orrmConfig from "../ormconfig";
-
+import { dbManager } from "./config/db";
 
 const port = 8080;
 
-let server : any;
+let server: any = startApp(port);
 
-console.log("orrmConfig", orrmConfig, port)
+console.log("orrmConfig", orrmConfig, port);
 
-createConnection(orrmConfig as DataSourceOptions)
-    .then(async () => {
-      console.log('Connected to Database');
-      server = startApp(port)
+
+dbManager
+  .connect()
+  .then(async () => {
+    console.log("Connected to Database");
+    //  server = startApp(port)           // in our case, db is not necessarily available but server should connect after db connection
   })
-  .catch(err=>console.log(err))
+  .catch((err) => console.log(err));
 
 const exitHandler = (error: any) => {
   if (error instanceof Error) {
@@ -25,19 +26,16 @@ const exitHandler = (error: any) => {
 
   if (server) {
     server.close(() => {
-      console.log('Server closed');
-      getConnection().close().then(() => {
-        console.log('Typeorm connection closed');
-        process.exit(1);
-      });
+      console.log("Server closed");
+      dbManager.close();
     });
   } else {
     process.exit(1);
   }
 };
 
-process.on('uncaughtException', exitHandler);
-process.on('unhandledRejection', exitHandler);
+process.on("uncaughtException", exitHandler);
+process.on("unhandledRejection", exitHandler);
 
-process.on('SIGINT', exitHandler);
-process.on('SIGTERM', exitHandler);
+process.on("SIGINT", exitHandler);
+process.on("SIGTERM", exitHandler);
