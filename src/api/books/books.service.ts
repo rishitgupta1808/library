@@ -16,7 +16,9 @@ export class BookService extends Book {
     return await getRepository(Customer_Book).find({
       relations: {
         customer: true,
-        book: true,
+        book: {
+            bookType : true
+        },
       },
       where: {
         customer: {

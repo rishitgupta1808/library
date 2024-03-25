@@ -45,7 +45,7 @@ it('should return 400 for bad requests', async () => {
     expect(response.status).toBe(200);
    
     expect(response.body.success).toBe(true);
-    expect(response.body.data.price).toBe(10);
+    expect(response.body.data.price).toBe(15);
   });
 
   it('when customer return book late', async () => {
@@ -59,7 +59,7 @@ it('should return 400 for bad requests', async () => {
     expect(response.status).toBe(200); 
 
     expect(response.body.success).toBe(true);
-    expect(response.body.data.price).toBe(163);
+    expect(response.body.data.price).toBe(244.5);
     expect(typeof response.body.data.message).toBe('string');
   });
 
@@ -73,6 +73,6 @@ it('should return 400 for bad requests', async () => {
     expect(response.status).toBe(200); 
 
     expect(response.body.success).toBe(true);
-    expect(response.body.data.price).toBe(24);
+    expect(response.body.data.price).toBe(36);
   });
 });

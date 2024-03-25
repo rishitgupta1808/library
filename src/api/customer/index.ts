@@ -5,6 +5,10 @@ const router = express.Router();
 
 const CustomerConttrollerIns = new CustomerController();
 
-router.get("/fees", getCustomerFeesByBooksValidator ,CustomerConttrollerIns.getCustomerFeesByBooksController);
+router.get(
+  "/fees",
+  getCustomerFeesByBooksValidator,
+  CustomerConttrollerIns.getCustomerFeesByBooksController,
+);
 
 module.exports = router;

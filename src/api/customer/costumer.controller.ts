@@ -14,7 +14,7 @@ export class CustomerController extends CustomerService {
 
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({success : false, errors: errors.array() });
+        return res.status(400).json({ success: false, errors: errors.array() });
       }
 
       const roles = await this.calculateFessByBookIds({

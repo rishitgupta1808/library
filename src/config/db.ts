@@ -3,8 +3,13 @@ import {
   Connection,
   getConnectionManager,
   DataSourceOptions,
+  DataSource,
 } from "typeorm";
+import dotenv from "dotenv";
+dotenv.config();
 import ormconfig from "../../ormconfig";
+
+
 
 class DbManager {
   private connection: Connection | undefined;
@@ -48,3 +53,5 @@ class DbManager {
 }
 
 export const dbManager = new DbManager();
+
+export const datasoure = new DataSource(ormconfig as DataSourceOptions);
