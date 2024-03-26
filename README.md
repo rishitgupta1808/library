@@ -5,6 +5,9 @@ DB_USER_NAME =
 DB_PASSWORD =
 DB_NAME =
 
+Synchronize Database with schema
+in ormconfig.ts make synchronize: true
+
 Commands :
 To install dependencies : npm install
 To run the project : npm start
