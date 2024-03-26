@@ -12,7 +12,8 @@ Synchronize Database with schema in ormconfig.ts make
 
 Commands :
 
-```To install dependencies : npm install
+```
+To install dependencies : npm install
 To run the project : npm start
 To prettify your code : npm run prettify
 To run the testing script : npm test
